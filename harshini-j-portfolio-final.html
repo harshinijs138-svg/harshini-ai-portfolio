@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harshini J — Frontend Developer & Applied AI Student</title>
+<meta name="description" content="Portfolio of Harshini J — Frontend Developer & Applied AI Student building futuristic AI-powered web experiences.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#050816;--cyan:#22D3EE;--purple:#8B5CF6;--blue:#3B82F6;--pink:#EC4899;--indigo:#6366F1;--green:#10b981}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:#fff;font-family:'Inter',system-ui,sans-serif;font-size:14px;line-height:1.6;overflow-x:hidden;cursor:none}
+#cur{position:fixed;width:10px;height:10px;border-radius:50%;background:var(--cyan);pointer-events:none;z-index:99999;left:0;top:0;mix-blend-mode:screen;transform:translate(-50%,-50%)}
+#cur2{position:fixed;width:32px;height:32px;border-radius:50%;border:1px solid rgba(34,211,238,.3);pointer-events:none;z-index:99998;left:0;top:0;transform:translate(-50%,-50%);transition:left .15s,top .15s}
+#pbar{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--cyan),var(--purple));z-index:9999;width:0;pointer-events:none}
+.page{display:none}.page.active{display:block;animation:fIn .35s ease both}
+@keyframes fIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+nav{display:flex;align-items:center;justify-content:space-between;padding:13px 28px;background:rgba(5,8,22,.88);border-bottom:.5px solid rgba(255,255,255,.07);position:sticky;top:0;z-index:1000;backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
+.logo{font-weight:900;font-size:18px;letter-spacing:-.04em;background:linear-gradient(135deg,#22D3EE,#8B5CF6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;cursor:pointer;user-select:none}
+.navlinks{display:flex;gap:2px;flex-wrap:wrap}
+.nb{background:none;border:none;color:rgba(255,255,255,.42);font-size:12px;padding:7px 10px;cursor:pointer;border-radius:7px;font-family:inherit;font-weight:500;transition:all .2s;letter-spacing:.01em}
+.nb:hover,.nb.on{color:#fff;background:rgba(255,255,255,.06)}.nb.on{color:var(--cyan)}
+.sdot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:pulse 2s infinite;flex-shrink:0}
+.sec{padding:72px 28px;max-width:920px;margin:0 auto}
+.lbl{display:inline-flex;align-items:center;gap:6px;font-size:10px;letter-spacing:.16em;color:var(--cyan);background:rgba(34,211,238,.07);border:.5px solid rgba(34,211,238,.18);border-radius:100px;padding:4px 14px;margin-bottom:18px;text-transform:uppercase;font-weight:600}
+h2{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:900;letter-spacing:-.04em;margin-bottom:10px;line-height:1.05}
+.sub{color:rgba(255,255,255,.42);font-size:14px;margin-bottom:36px;max-width:460px}
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.card{background:rgba(255,255,255,.025);border:.5px solid rgba(255,255,255,.07);border-radius:18px;padding:24px;transition:all .32s cubic-bezier(.23,1,.32,1)}
+.card:hover{transform:translateY(-4px);border-color:rgba(139,92,246,.28)}
+/* HERO */
+.hwrap{min-height:calc(100vh - 50px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:48px 28px;position:relative;overflow:hidden}
+canvas#bg{position:absolute;inset:0;z-index:0}
+.gbg{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);background-size:54px 54px}
+.blob{position:absolute;border-radius:50%;pointer-events:none;filter:blur(70px);z-index:0}
+.hi{position:relative;z-index:2}
+.orb{width:160px;height:160px;border-radius:50%;margin:0 auto 34px;position:relative;animation:float 4s ease-in-out infinite}
+.orb-in{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,#22D3EE,#8B5CF6,#EC4899,#3B82F6,#22D3EE);animation:spin 6s linear infinite;opacity:.85}
+.orb-core{position:absolute;inset:10px;border-radius:50%;background:radial-gradient(circle at 40% 35%,rgba(139,92,246,.65),rgba(5,8,22,.95));display:flex;align-items:center;justify-content:center;font-size:36px;color:rgba(255,255,255,.9)}
+.orb-r1{position:absolute;inset:-8px;border-radius:50%;border:.5px solid rgba(34,211,238,.22);animation:spin 10s linear infinite}
+.orb-r2{position:absolute;inset:-18px;border-radius:50%;border:.5px solid rgba(139,92,246,.13);animation:spin 18s linear infinite reverse}
+.avail{display:inline-flex;align-items:center;gap:7px;background:rgba(16,185,129,.07);border:.5px solid rgba(16,185,129,.2);border-radius:100px;padding:6px 16px;font-size:10px;color:rgba(255,255,255,.65);letter-spacing:.08em;margin-bottom:28px;text-transform:uppercase;font-weight:600}
+.h1{font-size:clamp(2.4rem,7vw,5rem);font-weight:900;line-height:1.02;letter-spacing:-.05em;margin-bottom:14px}
+.gt{background:linear-gradient(135deg,#22D3EE 0%,#8B5CF6 40%,#EC4899 80%,#22D3EE 100%);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:gm 5s linear infinite}
+@keyframes gm{0%{background-position:0%}100%{background-position:200%}}
+.hsub{color:rgba(255,255,255,.4);font-size:clamp(14px,2vw,18px);margin-bottom:12px;letter-spacing:.05em}
+.tw{font-size:clamp(13px,1.8vw,16px);color:var(--cyan);margin-bottom:36px;min-height:24px}
+.csr{border-right:2px solid var(--cyan);animation:blink 1s infinite;padding-right:1px}
+.pills{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-bottom:28px}
+.pill{background:rgba(255,255,255,.04);border:.5px solid rgba(255,255,255,.09);border-radius:6px;padding:4px 12px;font-size:11px;color:rgba(255,255,255,.38);font-weight:500}
+.ctas{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.ba{padding:13px 26px;border-radius:12px;background:linear-gradient(135deg,var(--blue),var(--purple));border:none;color:#fff;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;letter-spacing:.02em;transition:all .22s;text-decoration:none;display:inline-block}
+.ba:hover{transform:translateY(-2px);filter:brightness(1.12)}
+.bb{padding:13px 26px;border-radius:12px;background:rgba(255,255,255,.05);border:.5px solid rgba(255,255,255,.12);color:#fff;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .22s;text-decoration:none;display:inline-block}
+.bb:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.2)}
+.socs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.soc{padding:8px 15px;border-radius:8px;background:rgba(255,255,255,.03);border:.5px solid rgba(255,255,255,.08);color:rgba(255,255,255,.48);font-size:12px;text-decoration:none;transition:all .2s;font-weight:500}
+.soc:hover{color:var(--cyan);border-color:rgba(34,211,238,.3);box-shadow:0 0 18px rgba(34,211,238,.1)}
+/* gradient border card */
+.gbc{border-radius:20px;padding:1px;background:linear-gradient(135deg,#22D3EE,#8B5CF6,#EC4899,#22D3EE);background-size:300%;animation:gm 4s linear infinite}
+.gbc-in{background:var(--bg);border-radius:19px;padding:24px}
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:30px 0}
+.stat{background:rgba(255,255,255,.025);border:.5px solid rgba(255,255,255,.07);border-radius:14px;padding:20px 14px;text-align:center;transition:.3s}
+.stat:hover{border-color:rgba(139,92,246,.28);transform:translateY(-3px)}
+.sn{font-size:28px;font-weight:900;background:linear-gradient(135deg,#22D3EE,#8B5CF6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sl{font-size:11px;color:rgba(255,255,255,.28);margin-top:3px;font-weight:500;letter-spacing:.03em}
+/* skills */
+.skr{margin-bottom:17px}
+.skh{display:flex;justify-content:space-between;margin-bottom:7px;align-items:center}
+.skb{height:3px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden}
+.skf{height:100%;border-radius:2px}
+/* timeline */
+.tl{position:relative;padding-left:26px;margin-top:16px}
+.tl-ln{position:absolute;left:6px;top:4px;bottom:4px;width:1px;background:linear-gradient(to bottom,rgba(34,211,238,.5),rgba(139,92,246,.07))}
+.tli{position:relative;margin-bottom:24px}
+.tld{position:absolute;left:-22px;top:5px;width:11px;height:11px;border-radius:50%;border:2px solid var(--bg)}
+/* projects */
+.pcrd{background:rgba(255,255,255,.025);border:.5px solid rgba(255,255,255,.07);border-radius:18px;overflow:hidden;transition:all .32s cubic-bezier(.23,1,.32,1)}
+.pcrd:hover{transform:translateY(-5px) scale(1.01)}
+.ptop{height:130px;display:flex;align-items:center;justify-content:center;font-size:44px;position:relative;overflow:hidden}
+.pgb{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:18px 18px}
+.pb{padding:20px}
+.pbtns{display:flex;gap:8px;margin-top:13px}
+.pbtn{flex:1;padding:8px;border-radius:8px;font-size:11px;font-weight:700;cursor:pointer;text-align:center;text-decoration:none;transition:.18s;letter-spacing:.02em;display:block;font-family:inherit}
+.badge{display:inline-block;padding:3px 9px;border-radius:5px;font-size:11px;font-weight:600;margin:2px}
+/* chat */
+.chatbox{background:rgba(255,255,255,.02);border:.5px solid rgba(255,255,255,.07);border-radius:22px;overflow:hidden;max-width:740px;margin:0 auto}
+.chdr{display:flex;align-items:center;justify-content:space-between;padding:15px 20px;border-bottom:.5px solid rgba(255,255,255,.05);background:rgba(255,255,255,.015)}
+.cavt{width:34px;height:34px;border-radius:50%;background:conic-gradient(from 0deg,#22D3EE,#8B5CF6,#EC4899,#22D3EE);display:flex;align-items:center;justify-content:center;font-size:14px;animation:spin 8s linear infinite;flex-shrink:0}
+.msgs{height:360px;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:13px}
+.msgs::-webkit-scrollbar{width:3px}.msgs::-webkit-scrollbar-thumb{background:rgba(139,92,246,.3);border-radius:2px}
+.msg{display:flex;gap:9px;animation:fIn .28s ease}
+.msg.u{justify-content:flex-end}
+.bbl{max-width:74%;padding:11px 15px;font-size:13px;line-height:1.65;white-space:pre-wrap;word-break:break-word}
+.msg.ai .bbl{background:rgba(255,255,255,.045);border:.5px solid rgba(255,255,255,.07);border-radius:15px 15px 15px 3px}
+.msg.u .bbl{background:linear-gradient(135deg,var(--blue),var(--purple));border-radius:15px 15px 3px 15px}
+.tdots{display:flex;gap:4px;padding:11px 15px;background:rgba(255,255,255,.045);border:.5px solid rgba(255,255,255,.07);border-radius:15px 15px 15px 3px;width:fit-content}
+.d{width:6px;height:6px;border-radius:50%;background:var(--purple)}
+.chips{padding:8px 16px 12px;display:flex;flex-wrap:wrap;gap:6px;border-top:.5px solid rgba(255,255,255,.04)}
+.chip{background:rgba(255,255,255,.03);border:.5px solid rgba(255,255,255,.07);border-radius:100px;padding:5px 12px;font-size:11px;color:rgba(255,255,255,.44);cursor:pointer;font-family:inherit;transition:.18s}
+.chip:hover{color:var(--cyan);border-color:rgba(34,211,238,.28)}
+.cirow{padding:10px 14px;border-top:.5px solid rgba(255,255,255,.05);display:flex;gap:8px}
+#ci{flex:1;background:rgba(0,0,0,.35);border:.5px solid rgba(255,255,255,.08);border-radius:10px;padding:10px 14px;color:#fff;font-size:13px;outline:none;font-family:inherit}
+#ci:focus{border-color:rgba(34,211,238,.38)}
+#sb{padding:9px 18px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--purple));border:none;color:#fff;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit}
+.kr{padding:9px 16px;border-bottom:.5px solid rgba(255,255,255,.04)}
+#ak{width:100%;background:rgba(0,0,0,.3);border:.5px solid rgba(255,255,255,.08);border-radius:8px;padding:8px 12px;color:#fff;font-size:11px;outline:none;font-family:inherit}
+/* contact */
+.inp{width:100%;background:rgba(0,0,0,.3);border:.5px solid rgba(255,255,255,.08);border-radius:10px;padding:11px 15px;color:#fff;font-size:13px;outline:none;font-family:inherit;transition:.2s;display:block}
+.inp:focus{border-color:rgba(34,211,238,.38)}
+textarea.inp{resize:vertical;min-height:90px}
+.suc{background:rgba(16,185,129,.06);border:.5px solid rgba(16,185,129,.2);border-radius:18px;padding:36px;text-align:center;animation:fIn .5s ease}
+footer{border-top:.5px solid rgba(255,255,255,.06);padding:24px;text-align:center;color:rgba(255,255,255,.2);font-size:12px;margin-top:48px}
+/* animations */
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.88)}}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes dotB{0%,80%,100%{transform:scale(0);opacity:.3}40%{transform:scale(1);opacity:1}}
+/* responsive */
+@media(max-width:640px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .navlinks{gap:1px}
+  .nb{font-size:10px;padding:5px 7px}
+  nav{padding:11px 14px}
+  .sec{padding:52px 16px}
+  .ctas{flex-direction:column;align-items:center}
+  .ba,.bb{width:220px;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<div id="cur"></div>
+<div id="cur2"></div>
+<div id="pbar"></div>
+
+<nav>
+  <div class="logo" onclick="go(0)">HJ</div>
+  <div class="navlinks">
+    <button class="nb on" onclick="go(0)">Home</button>
+    <button class="nb" onclick="go(1)">AI Chat</button>
+    <button class="nb" onclick="go(2)">About</button>
+    <button class="nb" onclick="go(3)">Skills</button>
+    <button class="nb" onclick="go(4)">Projects</button>
+    <button class="nb" onclick="go(5)">Experience</button>
+    <button class="nb" onclick="go(6)">Contact</button>
+  </div>
+  <div class="sdot"></div>
+</nav>
+
+<!-- HERO -->
+<div id="p0" class="page active">
+  <div class="hwrap">
+    <canvas id="bg"></canvas>
+    <div class="gbg"></div>
+    <div class="blob" style="width:560px;height:560px;background:rgba(139,92,246,.06);top:-12%;right:-8%"></div>
+    <div class="blob" style="width:420px;height:420px;background:rgba(34,211,238,.05);bottom:-6%;left:-6%"></div>
+    <div class="hi">
+      <div class="orb">
+        <div class="orb-in"></div>
+        <div class="orb-core">✦</div>
+        <div class="orb-r1"></div>
+        <div class="orb-r2"></div>
+      </div>
+      <div class="avail">
+        <span style="width:5px;height:5px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green)"></span>
+        Available for opportunities
+      </div>
+      <h1 class="h1">Hi, I'm <span class="gt">Harshini J</span></h1>
+      <div class="hsub">Frontend Developer &nbsp;·&nbsp; Applied AI Student</div>
+      <div class="tw"><span id="typed"></span><span class="csr"></span></div>
+      <div class="pills">
+        <span class="pill">React JS</span><span class="pill">OpenAI API</span><span class="pill">Python</span>
+        <span class="pill">Tailwind CSS</span><span class="pill">Three.js</span><span class="pill">JavaScript</span><span class="pill">Framer Motion</span>
+      </div>
+      <div class="ctas">
+        <button class="ba" onclick="go(4)">Explore Projects</button>
+        <button class="bb" onclick="go(1)">✦ Talk with AI</button>
+        <a class="bb" href="Harshini_J_Resume.pdf" download="Harshini_J_Resume.pdf">↓ Download Resume</a>
+      </div>
+      <div class="socs">
+        <a class="soc" href="https://github.com/harshinijs138-svg" target="_blank" rel="noopener">◎ GitHub</a>
+        <a class="soc" href="https://www.linkedin.com/in/harshini-j24" target="_blank" rel="noopener">in LinkedIn</a>
+        <a class="soc" href="mailto:harshini.j24@gmail.com">@ Email</a>
+        <a class="soc" href="https://harshini-j-portfolio.netlify.app" target="_blank" rel="noopener">↗ Portfolio</a>
+      </div>
+    </div>
+    <div style="position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;z-index:2">
+      <span style="font-size:9px;letter-spacing:.14em;color:rgba(255,255,255,.2);text-transform:uppercase">Scroll</span>
+      <div style="width:1px;height:36px;background:linear-gradient(to bottom,rgba(34,211,238,.45),transparent);animation:float 2s ease-in-out infinite"></div>
+    </div>
+  </div>
+</div>
+
+<!-- AI CHAT -->
+<div id="p1" class="page">
+  <div class="sec">
+    <div style="text-align:center;margin-bottom:34px">
+      <div class="lbl">AI Assistant</div>
+      <h2>Talk with Harshini's AI</h2>
+      <div class="sub" style="margin:0 auto;text-align:center;max-width:480px">Powered by AI· Ask anything about Harshini's skills, projects &amp; journey</div>
+    </div>
+    <div class="chatbox">
+      <div class="chdr">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div class="cavt">✦</div>
+          <div>
+            <div style="font-weight:700;font-size:13px">Harshini's AI</div>
+            <div style="font-size:10px;color:var(--green);display:flex;align-items:center;gap:4px">
+              <span style="width:5px;height:5px;border-radius:50%;background:var(--green);box-shadow:0 0 5px var(--green);display:inline-block"></span>Online · Ready
+            </div>
+          </div>
+        </div>
+        <button onclick="tkgl()" style="background:none;border:.5px solid rgba(255,255,255,.1);border-radius:7px;padding:5px 10px;color:rgba(255,255,255,.38);font-size:10px;cursor:pointer;font-family:inherit;text-transform:uppercase;letter-spacing:.06em">🔑 API Key</button>
+      </div>
+      <div id="kr" class="kr" style="display:none">
+        <input id="ak" placeholder="Paste your Anthropic API key (sk-ant-…) for live AI responses">
+      </div>
+      <div class="msgs" id="msgs"></div>
+      <div class="chips">
+        <button class="chip" onclick="sm('Tell me about Harshini')">About Harshini</button>
+        <button class="chip" onclick="sm('Show her projects')">Projects</button>
+        <button class="chip" onclick="sm('What skills does she have?')">Skills</button>
+        <button class="chip" onclick="sm('What are her career goals?')">Career goals</button>
+        <button class="chip" onclick="sm('Open GitHub')">GitHub</button>
+        <button class="chip" onclick="sm('How can I contact Harshini?')">Contact info</button>
+        <button class="chip" onclick="sm('Tell me about FounderForge AI')">FounderForge AI</button>
+      </div>
+      <div class="cirow">
+        <input id="ci" placeholder="Ask about Harshini…" onkeydown="if(event.key==='Enter')sm()">
+        <button id="sb" onclick="sm()">Send ↑</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div id="p2" class="page">
+  <div class="sec">
+    <div style="text-align:center">
+      <div class="lbl">About me</div>
+      <h2>The developer behind the code</h2>
+      <div class="sub" style="margin:0 auto;text-align:center;max-width:440px">Passion for frontend + AI, one component at a time</div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="sn">10+</div><div class="sl">Projects Built</div></div>
+      <div class="stat"><div class="sn">5+</div><div class="sl">Technologies</div></div>
+      <div class="stat"><div class="sn">2+</div><div class="sl">Years Coding</div></div>
+      <div class="stat"><div class="sn">∞</div><div class="sl">Curiosity</div></div>
+    </div>
+    <div class="g2">
+      <div class="gbc"><div class="gbc-in">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px">
+          <div style="width:60px;height:60px;border-radius:50%;background:conic-gradient(from 0deg,#22D3EE,#8B5CF6,#EC4899,#22D3EE);display:flex;align-items:center;justify-content:center;font-size:26px;animation:spin 12s linear infinite">👩‍💻</div>
+          <div>
+            <div style="font-weight:800;font-size:16px;letter-spacing:-.02em">Harshini J</div>
+            <div style="color:var(--cyan);font-size:12px;font-weight:500">Frontend Dev · AI Student</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.32);margin-top:2px">Chennai, India</div>
+          </div>
+        </div>
+        <p style="color:rgba(255,255,255,.55);font-size:13px;line-height:1.78">I love the intersection of design and intelligence. From pixel-perfect React UIs to integrating language models into real products — I build experiences that feel like the future.</p>
+        <div style="margin-top:16px;padding-top:14px;border-top:.5px solid rgba(255,255,255,.06);display:flex;flex-direction:column;gap:6px">
+          <a href="mailto:harshini.j24@gmail.com" style="font-size:12px;color:var(--cyan);text-decoration:none">📧 harshini.j24@gmail.com</a>
+          <a href="https://harshini-j-portfolio.netlify.app" target="_blank" rel="noopener" style="font-size:12px;color:rgba(255,255,255,.35);text-decoration:none">🌐 harshini-j-portfolio.netlify.app</a>
+        </div>
+      </div></div>
+      <div class="card">
+        <div style="font-size:10px;color:rgba(255,255,255,.26);letter-spacing:.1em;margin-bottom:12px;text-transform:uppercase;font-weight:600">Currently focused on</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;align-items:center;gap:9px"><span style="color:var(--purple);font-size:11px;font-weight:800">▸</span><span style="font-size:13px;color:rgba(255,255,255,.6)">Building AI-native web experiences</span></div>
+          <div style="display:flex;align-items:center;gap:9px"><span style="color:var(--cyan);font-size:11px;font-weight:800">▸</span><span style="font-size:13px;color:rgba(255,255,255,.6)">Mastering Three.js + TypeScript</span></div>
+          <div style="display:flex;align-items:center;gap:9px"><span style="color:var(--pink);font-size:11px;font-weight:800">▸</span><span style="font-size:13px;color:rgba(255,255,255,.6)">Contributing to open source</span></div>
+          <div style="display:flex;align-items:center;gap:9px"><span style="color:var(--indigo);font-size:11px;font-weight:800">▸</span><span style="font-size:13px;color:rgba(255,255,255,.6)">Landing first AI/frontend internship</span></div>
+        </div>
+      </div>
+    </div>
+    <div style="background:linear-gradient(135deg,rgba(34,211,238,.06),rgba(139,92,246,.06));border:.5px solid rgba(139,92,246,.18);border-radius:14px;padding:22px 26px;margin-top:18px">
+      <p style="font-size:13px;color:rgba(255,255,255,.62);line-height:1.8;font-style:italic">"Great software lives at the intersection of <span style="color:var(--cyan);font-weight:600">technical depth</span> and <span style="color:var(--purple);font-weight:600">creative vision</span>. Every project is a chance to build something that truly matters."</p>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<div id="p3" class="page">
+  <div class="sec">
+    <div style="text-align:center">
+      <div class="lbl">Skills</div>
+      <h2>Technologies I work with</h2>
+      <div class="sub" style="margin:0 auto;text-align:center;max-width:440px">A crafted stack for modern, intelligent applications</div>
+    </div>
+    <div class="g3" style="margin-top:32px">
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:7px;margin-bottom:20px"><span style="width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px var(--cyan)"></span><span style="font-size:10px;letter-spacing:.1em;color:rgba(255,255,255,.38);text-transform:uppercase;font-weight:600">Frontend</span></div>
+        <div id="sk1"></div>
+      </div>
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:7px;margin-bottom:20px"><span style="width:7px;height:7px;border-radius:50%;background:var(--purple);box-shadow:0 0 8px var(--purple)"></span><span style="font-size:10px;letter-spacing:.1em;color:rgba(255,255,255,.38);text-transform:uppercase;font-weight:600">AI / Backend</span></div>
+        <div id="sk2"></div>
+      </div>
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:7px;margin-bottom:20px"><span style="width:7px;height:7px;border-radius:50%;background:var(--pink);box-shadow:0 0 8px var(--pink)"></span><span style="font-size:10px;letter-spacing:.1em;color:rgba(255,255,255,.38);text-transform:uppercase;font-weight:600">Tools</span></div>
+        <div id="sk3"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<div id="p4" class="page">
+  <div class="sec">
+    <div style="text-align:center">
+      <div class="lbl">Projects</div>
+      <h2>Things I've built</h2>
+      <div class="sub" style="margin:0 auto;text-align:center;max-width:440px">Real projects shipped — creativity meets technical depth</div>
+    </div>
+    <div class="g2" style="margin-top:32px">
+
+      <div class="pcrd" style="border-color:rgba(34,211,238,.14)" onmouseover="this.style.borderColor='rgba(34,211,238,.32)'" onmouseout="this.style.borderColor='rgba(34,211,238,.14)'">
+        <div class="ptop" style="background:linear-gradient(135deg,rgba(34,211,238,.08),rgba(59,130,246,.04))">
+          <div class="pgb"></div><span style="position:relative;z-index:1">🌐</span>
+          <div style="position:absolute;top:10px;right:12px;font-size:50px;font-weight:900;opacity:.04;color:#22D3EE">01</div>
+        </div>
+        <div class="pb">
+          <div style="font-weight:800;font-size:15px;letter-spacing:-.02em;margin-bottom:6px">Personal Portfolio Website</div>
+          <div style="color:rgba(255,255,255,.44);font-size:12px;line-height:1.7;margin-bottom:11px">Professional developer portfolio with responsive design, project showcase, and social integration.</div>
+          <div>
+            <span class="badge" style="background:rgba(34,211,238,.1);color:#67e8f9;border:.5px solid rgba(34,211,238,.2)">HTML</span>
+            <span class="badge" style="background:rgba(34,211,238,.1);color:#67e8f9;border:.5px solid rgba(34,211,238,.2)">CSS</span>
+            <span class="badge" style="background:rgba(34,211,238,.1);color:#67e8f9;border:.5px solid rgba(34,211,238,.2)">JavaScript</span>
+            <span class="badge" style="background:rgba(34,211,238,.1);color:#67e8f9;border:.5px solid rgba(34,211,238,.2)">React.js</span>
+          </div>
+          <div class="pbtns">
+            <a class="pbtn" href="https://github.com/harshinijs138-svg" target="_blank" rel="noopener" style="background:rgba(255,255,255,.04);border:.5px solid rgba(255,255,255,.09);color:rgba(255,255,255,.5)">◎ GitHub</a>
+            <a class="pbtn" href="https://harshini-j-portfolio.netlify.app" target="_blank" rel="noopener" style="background:rgba(34,211,238,.08);border:.5px solid rgba(34,211,238,.2);color:#67e8f9">↗ Live Demo</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pcrd" style="border-color:rgba(139,92,246,.14)" onmouseover="this.style.borderColor='rgba(139,92,246,.32)'" onmouseout="this.style.borderColor='rgba(139,92,246,.14)'">
+        <div class="ptop" style="background:linear-gradient(135deg,rgba(139,92,246,.08),rgba(236,72,153,.04))">
+          <div class="pgb"></div><span style="position:relative;z-index:1">⚗️</span>
+          <div style="position:absolute;top:10px;right:12px;font-size:50px;font-weight:900;opacity:.04;color:#8B5CF6">02</div>
+        </div>
+        <div class="pb">
+          <div style="font-weight:800;font-size:15px;letter-spacing:-.02em;margin-bottom:6px">Country Peek Project</div>
+          <div style="color:rgba(255,255,255,.44);font-size:12px;line-height:1.7;margin-bottom:11px">Built an interactive country explorer web application using JavaScript and REST APIs.</div>
+          <div>
+            <span class="badge" style="background:rgba(139,92,246,.1);color:#c4b5fd;border:.5px solid rgba(139,92,246,.2)">React.js</span>
+            <span class="badge" style="background:rgba(139,92,246,.1);color:#c4b5fd;border:.5px solid rgba(139,92,246,.2)">JavaScript</span>
+          </div>
+          <div class="pbtns">
+            <a class="pbtn" href="https://github.com/harshinijs138-svg" target="_blank" rel="noopener" style="background:rgba(255,255,255,.04);border:.5px solid rgba(255,255,255,.09);color:rgba(255,255,255,.5)">◎ GitHub</a>
+            <a class="pbtn" href="#" style="background:rgba(139,92,246,.08);border:.5px solid rgba(139,92,246,.2);color:#c4b5fd">↗ Demo</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pcrd" style="border-color:rgba(236,72,153,.14)" onmouseover="this.style.borderColor='rgba(236,72,153,.32)'" onmouseout="this.style.borderColor='rgba(236,72,153,.14)'">
+        <div class="ptop" style="background:linear-gradient(135deg,rgba(236,72,153,.08),rgba(139,92,246,.04))">
+          <div class="pgb"></div><span style="position:relative;z-index:1">🤖</span>
+          <div style="position:absolute;top:10px;right:12px;font-size:50px;font-weight:900;opacity:.04;color:#EC4899">03</div>
+        </div>
+        <div class="pb">
+          <div style="font-weight:800;font-size:15px;letter-spacing:-.02em;margin-bottom:6px">FounderForge AI</div>
+          <div style="color:rgba(255,255,255,.44);font-size:12px;line-height:1.7;margin-bottom:11px">AI Startup Idea Generator with business validation and founder-focused AI assistance.</div>
+          <div>
+            <span class="badge" style="background:rgba(236,72,153,.1);color:#f9a8d4;border:.5px solid rgba(236,72,153,.2)">HTML</span>
+            <span class="badge" style="background:rgba(236,72,153,.1);color:#f9a8d4;border:.5px solid rgba(236,72,153,.2)">CSS</span>
+            <span class="badge" style="background:rgba(236,72,153,.1);color:#f9a8d4;border:.5px solid rgba(236,72,153,.2)">JavaScript</span>
+            <span class="badge" style="background:rgba(236,72,153,.1);color:#f9a8d4;border:.5px solid rgba(236,72,153,.2)">AI</span>
+          </div>
+          <div class="pbtns">
+            <a class="pbtn" href="https://github.com/harshinijs138-svg" target="_blank" rel="noopener" style="background:rgba(255,255,255,.04);border:.5px solid rgba(255,255,255,.09);color:rgba(255,255,255,.5)">◎ GitHub</a>
+            <a class="pbtn" href="#" style="background:rgba(236,72,153,.08);border:.5px solid rgba(236,72,153,.2);color:#f9a8d4">↗ Demo</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pcrd" style="border-color:rgba(99,102,241,.14)" onmouseover="this.style.borderColor='rgba(99,102,241,.32)'" onmouseout="this.style.borderColor='rgba(99,102,241,.14)'">
+        <div class="ptop" style="background:linear-gradient(135deg,rgba(99,102,241,.08),rgba(59,130,246,.04))">
+          <div class="pgb"></div><span style="position:relative;z-index:1">👥</span>
+          <div style="position:absolute;top:10px;right:12px;font-size:50px;font-weight:900;opacity:.04;color:#6366F1">04</div>
+        </div>
+        <div class="pb">
+          <div style="font-weight:800;font-size:15px;letter-spacing:-.02em;margin-bottom:6px">Squad Portfolio Project</div>
+          <div style="color:rgba(255,255,255,.44);font-size:12px;line-height:1.7;margin-bottom:11px">Team collaboration portfolio with portfolio management features and modern UI.</div>
+          <div>
+            <span class="badge" style="background:rgba(99,102,241,.1);color:#a5b4fc;border:.5px solid rgba(99,102,241,.2)">Frontend</span>
+            <span class="badge" style="background:rgba(99,102,241,.1);color:#a5b4fc;border:.5px solid rgba(99,102,241,.2)">Team Project</span>
+          </div>
+          <div class="pbtns">
+            <a class="pbtn" href="https://github.com/harshinijs138-svg" target="_blank" rel="noopener" style="background:rgba(255,255,255,.04);border:.5px solid rgba(255,255,255,.09);color:rgba(255,255,255,.5)">◎ GitHub</a>
+            <a class="pbtn" href="#" style="background:rgba(99,102,241,.08);border:.5px solid rgba(99,102,241,.2);color:#a5b4fc">↗ Demo</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<div id="p5" class="page">
+  <div class="sec">
+    <div style="text-align:center">
+      <div class="lbl">Experience</div>
+      <h2>The journey so far</h2>
+      <div class="sub" style="margin:0 auto;text-align:center;max-width:440px">2025-2026 milestones, learning achievements &amp; the road ahead</div>
+    </div>
+    <div style="max-width:580px;margin:36px auto 0">
+      <div class="tl">
+        <div class="tl-ln"></div>
+        <div class="tli"><div class="tld" style="background:#22D3EE;box-shadow:0 0 8px #22D3EE"></div><div style="font-size:10px;color:#67e8f9;letter-spacing:.07em;font-weight:700;margin-bottom:3px">2026</div><div style="font-weight:700;font-size:14px;margin-bottom:4px">AI Portfolio Assistant creation</div><div style="font-size:12px;color:rgba(255,255,255,.44);line-height:1.65">Designed and launched this world-class AI portfolio integrating Claude APIs with cinematic UI.</div></div>
+        <div class="tli"><div class="tld" style="background:#8B5CF6;box-shadow:0 0 8px #8B5CF6"></div><div style="font-size:10px;color:#c4b5fd;letter-spacing:.07em;font-weight:700;margin-bottom:3px">2026</div><div style="font-weight:700;font-size:14px;margin-bottom:4px">FounderForge AI launched</div><div style="font-size:12px;color:rgba(255,255,255,.44);line-height:1.65">Built an AI startup idea generator with business validation and AI-powered founder assistance.</div></div>
+        <div class="tli"><div class="tld" style="background:#EC4899;box-shadow:0 0 8px #EC4899"></div><div style="font-size:10px;color:#f9a8d4;letter-spacing:.07em;font-weight:700;margin-bottom:3px">2026</div><div style="font-weight:700;font-size:14px;margin-bottom:4px">Modern web animation mastery</div><div style="font-size:12px;color:rgba(255,255,255,.44);line-height:1.65">Mastered Framer Motion, GSAP, and Three.js for premium cinematic frontend experiences.</div></div>
+        <div class="tli"><div class="tld" style="background:#10b981;box-shadow:0 0 8px #10b981"></div><div style="font-size:10px;color:#6ee7b7;letter-spacing:.07em;font-weight:700;margin-bottom:3px">2026</div><div style="font-weight:700;font-size:14px;margin-bottom:4px">Portfolio deployed on Netlify</div><div style="font-size:12px;color:rgba(255,255,255,.44);line-height:1.65">First live production deployment — harshini-j-portfolio.netlify.app goes live.</div></div>
+        <div class="tli"><div class="tld" style="background:#3B82F6;box-shadow:0 0 8px #3B82F6"></div><div style="font-size:10px;color:#93c5fd;letter-spacing:.07em;font-weight:700;margin-bottom:3px">2026</div><div style="font-weight:700;font-size:14px;margin-bottom:4px">React developer journey begins</div><div style="font-size:12px;color:rgba(255,255,255,.44);line-height:1.65">Built multiple React projects exploring component architecture, hooks, and REST API integrations.</div></div>
+        <div class="tli"><div class="tld" style="background:#6366F1;box-shadow:0 0 8px #6366F1"></div><div style="font-size:10px;color:#a5b4fc;letter-spacing:.07em;font-weight:700;margin-bottom:3px">2026</div><div style="font-weight:700;font-size:14px;margin-bottom:4px">Frontend development deep dive</div><div style="font-size:12px;color:rgba(255,255,255,.44);line-height:1.65">Serious journey into HTML, CSS, JS with UI/UX design principles and responsive layouts.</div></div>
+        <div class="tli"><div class="tld" style="background:#f59e0b;box-shadow:0 0 8px #f59e0b"></div><div style="font-size:10px;color:#fcd34d;letter-spacing:.07em;font-weight:700;margin-bottom:3px">2026 → now</div><div style="font-weight:700;font-size:14px;margin-bottom:4px">Internship preparation — active</div><div style="font-size:12px;color:rgba(255,255,255,.44);line-height:1.65">Actively building skills, projects &amp; connections to land an AI/frontend developer internship.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div id="p6" class="page">
+  <div class="sec" style="max-width:640px">
+    <div style="text-align:center">
+      <div class="lbl">Contact</div>
+      <h2>Let's build something together</h2>
+      <div class="sub" style="margin:0 auto;text-align:center;max-width:440px">Open to internships, collaborations &amp; great conversations</div>
+    </div>
+    <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:24px 0 28px">
+      <a href="https://github.com/harshinijs138-svg" target="_blank" rel="noopener" class="soc">◎ GitHub</a>
+      <a href="https://www.linkedin.com/in/harshini-j24" target="_blank" rel="noopener" class="soc">in LinkedIn</a>
+      <a href="mailto:harshini.j24@gmail.com" class="soc">@ harshini.j24@gmail.com</a>
+      <a href="https://harshini-j-portfolio.netlify.app" target="_blank" rel="noopener" class="soc">↗ Portfolio</a>
+      <a href="Harshini_J_Resume.pdf" download="Harshini_J_Resume.pdf" class="soc">↓ Resume</a>
+    </div>
+    <div id="cfrm">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
+        <input class="inp" id="cn" placeholder="Your name">
+        <input class="inp" id="ce" type="email" placeholder="your@email.com">
+      </div>
+      <textarea class="inp" id="cm" placeholder="Tell me about your project or idea…" style="width:100%;margin-bottom:12px"></textarea>
+      <button onclick="csub()" class="ba" style="width:100%;padding:14px;font-size:14px;border-radius:12px;display:block;text-align:center">✦ Send Message</button>
+    </div>
+    <div id="csuc" style="display:none"></div>
+  </div>
+</div>
+
+<footer>
+  <span style="background:linear-gradient(135deg,#22D3EE,#8B5CF6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:900">Harshini J</span> · Frontend Developer &amp; Applied AI Student<br>
+  <span style="font-size:11px;margin-top:5px;display:block;opacity:.5">
+    <a href="mailto:harshini.j24@gmail.com" style="color:inherit;text-decoration:none">harshini.j24@gmail.com</a> &nbsp;·&nbsp;
+    <a href="https://github.com/harshinijs138-svg" target="_blank" style="color:inherit;text-decoration:none">github.com/harshinijs138-svg</a> &nbsp;·&nbsp;
+    <a href="https://www.linkedin.com/in/harshini-j24" target="_blank" style="color:inherit;text-decoration:none">linkedin.com/in/harshini-j24</a> &nbsp;·&nbsp;
+    <a href="https://harshini-j-portfolio.netlify.app" target="_blank" style="color:inherit;text-decoration:none">harshini-j-portfolio.netlify.app</a>
+  </span>
+</footer>
+
+<script>
+const PAGES=['p0','p1','p2','p3','p4','p5','p6'];
+function go(i){PAGES.forEach(p=>document.getElementById(p).classList.remove('active'));document.querySelectorAll('.nb').forEach(b=>b.classList.remove('on'));document.getElementById(PAGES[i]).classList.add('active');document.querySelectorAll('.nb')[i].classList.add('on');window.scrollTo({top:0,behavior:'smooth'});}
+
+// Typing animation
+const PH=["Building futuristic AI experiences.","Designing intelligent web interfaces.","Crafting premium frontend systems.","Exploring AI-powered applications."];
+let pi=0,ci2=0,dl=false;
+function tloop(){const p=PH[pi];if(!dl&&ci2<p.length){document.getElementById('typed').textContent=p.slice(0,++ci2);setTimeout(tloop,58);}else if(!dl){dl=true;setTimeout(tloop,2200);}else if(dl&&ci2>0){document.getElementById('typed').textContent=p.slice(0,--ci2);setTimeout(tloop,32);}else{dl=false;pi=(pi+1)%PH.length;setTimeout(tloop,280);}}
+tloop();
+
+// Particle canvas
+const canvas=document.getElementById('bg');
+const ctx=canvas.getContext('2d');
+let W=canvas.width=window.innerWidth,H=canvas.height=window.innerHeight;
+window.addEventListener('resize',()=>{W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;});
+const pts=Array.from({length:80},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.22,vy:(Math.random()-.5)*.22,r:Math.random()*1.3+.4,c:['#22D3EE','#8B5CF6','#EC4899','#3B82F6','#6366F1'][Math.floor(Math.random()*5)]}));
+function drawBg(){ctx.clearRect(0,0,W,H);pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.c+'66';ctx.fill();});for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<90){ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.strokeStyle=`rgba(99,102,241,${.06*(1-d/90)})`;ctx.lineWidth=.5;ctx.stroke();}}requestAnimationFrame(drawBg);}
+drawBg();
+
+// Custom cursor
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+(function aC(){rx+=(mx-rx)*.16;ry+=(my-ry)*.16;document.getElementById('cur').style.left=mx+'px';document.getElementById('cur').style.top=my+'px';document.getElementById('cur2').style.left=rx+'px';document.getElementById('cur2').style.top=ry+'px';requestAnimationFrame(aC);})();
+
+// Scroll progress
+window.addEventListener('scroll',()=>{const t=document.documentElement.scrollHeight-window.innerHeight;document.getElementById('pbar').style.width=(t>0?window.scrollY/t*100:0)+'%';});
+
+// Skills
+const SKD={sk1:[{n:'React JS',l:90,c:'#22D3EE'},{n:'JavaScript',l:85,c:'#22D3EE'},{n:'HTML5 & CSS3',l:95,c:'#22D3EE'},{n:'Tailwind CSS',l:88,c:'#22D3EE'},{n:'Framer Motion',l:74,c:'#22D3EE'}],sk2:[{n:'Python',l:79,c:'#8B5CF6'},{n:'OpenAI API',l:74,c:'#8B5CF6'},{n:'Streamlit',l:68,c:'#8B5CF6'},{n:'Prompt Engineering',l:82,c:'#8B5CF6'},{n:'REST APIs',l:77,c:'#8B5CF6'}],sk3:[{n:'GitHub',l:88,c:'#EC4899'},{n:'VS Code',l:95,c:'#EC4899'},{n:'Figma',l:71,c:'#EC4899'},{n:'Vercel',l:80,c:'#EC4899'},{n:'Postman',l:67,c:'#EC4899'}]};
+['sk1','sk2','sk3'].forEach(id=>{document.getElementById(id).innerHTML=SKD[id].map(s=>`<div class="skr"><div class="skh"><span style="font-size:13px;color:rgba(255,255,255,.75);font-weight:500">${s.n}</span><span style="font-size:11px;color:rgba(255,255,255,.28);font-weight:600">${s.l}%</span></div><div class="skb"><div class="skf" style="width:${s.l}%;background:linear-gradient(90deg,${s.c},${s.c}77)"></div></div></div>`).join('');});
+
+// AI Chat
+const SYS=`You are an AI assistant for Harshini J's portfolio website. Speak warmly and professionally on her behalf. About Harshini: frontend developer and Applied AI student based in Chennai, India. Real contact: Email harshini.j24@gmail.com, GitHub https://github.com/harshinijs138-svg, LinkedIn https://www.linkedin.com/in/harshini-j24, Portfolio https://harshini-j-portfolio.netlify.app. Skills: React, JavaScript, HTML/CSS, Tailwind, Framer Motion, Python, OpenAI API, Streamlit, Prompt Engineering, REST APIs, GitHub, VS Code, Figma, Vercel, Postman. Real projects: 1) Personal Portfolio Website (HTML/CSS/JS/React, live at harshini-j-portfolio.netlify.app), 2) Kalvium Portfolio (React.js academic project), 3) FounderForge AI (AI startup idea generator with business validation, HTML/CSS/JS + AI integration), 4) Squad Portfolio (team frontend project). Goals: AI/frontend internship, build AI-native tools, contribute to open source. Keep answers concise, impressive, and friendly.`;
+let hist=[];
+addAI("Hey! 👋 I'm Harshini's AI assistant. Ask me anything about her skills, projects, or how to get in touch!");
+
+function addAI(t){const m=document.getElementById('msgs');const d=document.createElement('div');d.className='msg ai';d.innerHTML=`<div class="cavt" style="width:26px;height:26px;font-size:10px;flex-shrink:0">✦</div><div class="bbl">${t}</div>`;m.appendChild(d);m.scrollTop=m.scrollHeight;}
+function addU(t){const m=document.getElementById('msgs');const d=document.createElement('div');d.className='msg u';d.innerHTML=`<div class="bbl">${t}</div>`;m.appendChild(d);m.scrollTop=m.scrollHeight;}
+function showD(){const m=document.getElementById('msgs');const d=document.createElement('div');d.className='msg ai';d.id='td';d.innerHTML=`<div class="cavt" style="width:26px;height:26px;font-size:10px;flex-shrink:0">✦</div><div class="tdots"><span class="d" style="animation:dotB 1.2s 0s infinite"></span><span class="d" style="animation:dotB 1.2s .2s infinite"></span><span class="d" style="animation:dotB 1.2s .4s infinite"></span></div>`;m.appendChild(d);m.scrollTop=m.scrollHeight;}
+function rmD(){const t=document.getElementById('td');if(t)t.remove();}
+
+function demo(msg){
+  const m=msg.toLowerCase();
+  if(m.includes('harshini')||m.includes('about')||m.includes('who'))return"I'm Harshini J — frontend developer & Applied AI student from Chennai 🇮🇳\n\n📧 harshini.j24@gmail.com\n🌐 harshini-j-portfolio.netlify.app\n💼 linkedin.com/in/harshini-j24";
+  if(m.includes('project')||m.includes('built')||m.includes('work'))return"My real projects:\n🌐 Personal Portfolio — live at harshini-j-portfolio.netlify.app\n⚗️ Country peek — React academic project\n🤖 FounderForge AI — AI startup idea generator\n👥 Squad Portfolio — team collaboration project\n\nAll on GitHub!";
+  if(m.includes('skill')||m.includes('tech')||m.includes('stack'))return"My stack:\n⚛ Frontend: React, JavaScript, HTML/CSS, Tailwind, Framer Motion\n🤖 AI: Python, OpenAI API, Streamlit, Prompt Engineering, REST APIs\n🛠 Tools: GitHub, VS Code, Figma, Vercel, Postman\n\nCurrently learning: Three.js + TypeScript!";
+  if(m.includes('goal')||m.includes('career'))return"My goals: land a frontend/AI internship at a product-focused company, contribute to AI-native tools, and build at the intersection of beautiful UI and intelligent AI. The future is AI-powered! ✨";
+  if(m.includes('github'))return"🐙 github.com/harshinijs138-svg\n\nReal code, real projects, active commits. Check it out! ⭐";
+  if(m.includes('contact')||m.includes('email')||m.includes('reach'))return"📧 harshini.j24@gmail.com\n💼 linkedin.com/in/harshini-j24\n🐙 github.com/harshinijs138-svg\n🌐 harshini-j-portfolio.netlify.app";
+  if(m.includes('founder')||m.includes('forgefounder')||m.includes('founderforge'))return"FounderForge AI is an AI-powered startup idea generator! Built with HTML, CSS, JavaScript + AI integration. It helps founders validate business ideas and get AI-driven insights for their startup journey. 🚀";
+  return"Great question! I know everything about Harshini's projects, skills, and goals. Try asking: 'What projects has she built?' or 'How can I contact her?' 😊";
+}
+
+async function sm(pre){
+  const inp=document.getElementById('ci');
+  const msg=pre||inp.value.trim();if(!msg)return;
+  inp.value='';addU(msg);hist.push({role:'user',content:msg});showD();
+  const key=document.getElementById('ak').value.trim();
+  if(!key){setTimeout(()=>{rmD();const r=demo(msg);addAI(r);hist.push({role:'assistant',content:r});},850);return;}
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':key,'anthropic-version':'2023-06-01'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:450,system:SYS,messages:hist})});
+    const data=await res.json();rmD();
+    const reply=data.content?.[0]?.text||demo(msg);addAI(reply);hist.push({role:'assistant',content:reply});
+  }catch(e){rmD();const r=demo(msg);addAI(r);hist.push({role:'assistant',content:r});}
+}
+
+function tkgl(){const r=document.getElementById('kr');r.style.display=r.style.display==='none'?'block':'none';}
+
+function csub(){
+  const n=document.getElementById('cn').value.trim(),e=document.getElementById('ce').value.trim(),m=document.getElementById('cm').value.trim();
+  if(!n||!e||!m){alert('Please fill in all fields.');return;}
+  document.getElementById('cfrm').style.display='none';
+  document.getElementById('csuc').style.display='block';
+  document.getElementById('csuc').innerHTML=`<div class="suc"><div style="font-size:50px;margin-bottom:14px">🚀</div><h3 style="color:#10b981;font-size:22px;font-weight:900;margin-bottom:8px;letter-spacing:-.03em">Message sent!</h3><p style="color:rgba(255,255,255,.44);font-size:14px">Thanks ${n}! Harshini will reply to ${e} soon.</p></div>`;
+}
+</script>
+</body>
+</html>
